@@ -1,25 +1,31 @@
-import logo from './logo.svg';
+import React from 'react';
+import logo from './ico.ico';
 import './App.css';
+import 'semantic-ui-css/semantic.min.css'
+import { react } from '@babel/types';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+//Components
+import { Button, Icon } from 'semantic-ui-react';
+import Navbar from  './components/Navbar'
+import ItemListContainer from './components/Container/ItemListContainer'
+
+class App extends React.Component {
+
+  render(){
+    
+    return(
+    <>    
+    <Navbar>      
+    </Navbar>
+    <ItemListContainer
+    name="Renzo"
+    message="Bienvenido a Anime Store"
+    ></ItemListContainer>
+    </>
+  )
+  }
 }
 
-export default App;
+
+
+export default App
