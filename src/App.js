@@ -10,10 +10,8 @@ export default function App() {
 
   return (
     <>    
-    <Navbar>      
-    </Navbar>
-    <ItemListContainer>
-    </ItemListContainer>
+    <Navbar></Navbar>
+    <ItemListContainer></ItemListContainer>
     </>
   );
 }
