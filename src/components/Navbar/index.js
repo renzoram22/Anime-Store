@@ -1,46 +1,50 @@
-import React, { Component } from 'react'
-import { Menu } from 'semantic-ui-react'
-import Dropdown from './Dropdown'
-import CartWidget from './CartWidget'
-import './Menu.css'
-
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { Menu } from "semantic-ui-react";
+import Dropdown from "./Dropdown";
+import CartWidget from "./CartWidget";
+import "./Menu.css";
 
 export default class MenuExampleContentProp extends Component {
-    state = {}
-  
-    handleItemClick = (e, { name }) => this.setState({ activeItem: name })
-  
-    render() {
-      const { activeItem } = this.state
-  
-      return (
-        <>
+  state = {};
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
+  render() {
+    const { activeItem } = this.state;
+
+    return (
+      <>
         <Menu>
-          
-          <Menu.Item>
-          <img src='../../logo.jpg' alt='Anime Store' /> <p>Anime Store</p>
-          </Menu.Item>
+          <Link to="/">
+            <Menu.Item
+              name="Home"
+              active={activeItem === "Home"}
+              onClick={this.handleItemClick}
+            >
+              <img src="../../logo.jpg" alt="Anime Store" /> <p>Anime Store</p>
+            </Menu.Item>
+          </Link>
           <Dropdown></Dropdown>
-          <Menu.Item
-            name='About Us'
-            active={activeItem === 'About Us'}
-            content='About Us'
-            onClick={this.handleItemClick}
-          />
-  
-          <Menu.Item
-            name='Stores'
-            active={activeItem === 'Stores'}
-            content='Stores'
-            onClick={this.handleItemClick}
-          />
-         
-
+          <Link to="/contact">
+            <Menu.Item
+              name="Contact"
+              active={activeItem === "Contact"}
+              content="Contact"
+              onClick={this.handleItemClick}
+            />
+          </Link>
+          <Link to="/stores">
+            <Menu.Item
+              name="Stores"
+              active={activeItem === "Stores"}
+              content="Stores"
+              onClick={this.handleItemClick}
+            />
+          </Link>
         </Menu>
-         <CartWidget></CartWidget>
-        </>
-      )
-    }
+        <CartWidget></CartWidget>
+      </>
+    );
   }
-  
-
+}

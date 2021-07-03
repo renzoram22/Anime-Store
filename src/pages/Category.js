@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Card, Icon, Image } from "semantic-ui-react";
-import Item from "./Item.js";
-import ItemCount from "./ItemCount.js";
-import "./ItemList.css";
 import { Link } from "react-router-dom";
+import { Card, Icon, Image } from "semantic-ui-react";
+import ItemCount from "../components/Item/ItemCount";
+import Item from "../components/Item/Item.js";
 
-const ItemList = (props) => {
-  const [products, setProducts] = useState([]);
+const Category = ({ match }) => {
+  const [product, setProduct] = useState([]);
   useEffect(() => {
     fetch("https://run.mocky.io/v3/06ba8cd7-8a5b-494f-a27b-93e4b80845f5")
       .then((response) => response.json())
-      .then((res) => setProducts(res));
+      .then((res) => setProduct(res));
   }, []);
+
+  const productCategory = product.filter(
+    (product) => product.idCategory == match.params.idCategory
+  );
 
   return (
     <Card.Group>
-      {products.map((product) => {
+      {productCategory.map((product) => {
         return (
           <div className="ItemContainer">
             <Link to={`/ProductDetails/${product.id}`}>
@@ -34,4 +37,4 @@ const ItemList = (props) => {
   );
 };
 
-export default ItemList;
+export default Category;

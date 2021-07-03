@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Card, Icon, Image } from 'semantic-ui-react'
-import Loader from './Loader.js'
-
+import React, { useState } from "react";
+import { Card, Icon, Image } from "semantic-ui-react";
+import Loader from "./Loader.js";
 
 const CardExampleCard = (props) => (
   <Card>
@@ -9,10 +8,10 @@ const CardExampleCard = (props) => (
     <Card.Content>
       <Card.Header>{props.name}</Card.Header>
       <Card.Meta>
-        <span className='date'>${props.price}</span>
+        <span className="date">${props.price}</span>
       </Card.Meta>
     </Card.Content>
   </Card>
-)
+);
 
-export default CardExampleCard
+export default CardExampleCard;
