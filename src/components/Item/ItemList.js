@@ -4,15 +4,25 @@ import Item from "./Item.js";
 import ItemCount from "./ItemCount.js";
 import "./ItemList.css";
 import { Link } from "react-router-dom";
+import Loader from "../Item/Loader.js";
 
 const ItemList = (props) => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("https://run.mocky.io/v3/06ba8cd7-8a5b-494f-a27b-93e4b80845f5")
+    fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((res) => setProducts(res));
   }, []);
 
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setShow(true);
+    }, 3000);
+  }, [show]);
+
+  if (!show) return <Loader></Loader>;
   return (
     <Card.Group>
       {products.map((product) => {
@@ -26,7 +36,13 @@ const ItemList = (props) => {
                 stock={product.stock}
               ></Item>
             </Link>
-            <ItemCount stock={product.stock}></ItemCount>
+            <ItemCount
+              stock={product.stock}
+              idProduct={product.id}
+              name={product.name}
+              image={product.image}
+              price={product.price}
+            ></ItemCount>
           </div>
         );
       })}

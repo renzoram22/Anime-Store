@@ -7,7 +7,7 @@ import Item from "../components/Item/Item.js";
 const Category = ({ match }) => {
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    fetch("https://run.mocky.io/v3/06ba8cd7-8a5b-494f-a27b-93e4b80845f5")
+    fetch(process.env.REACT_APP_BASE_URL)
       .then((response) => response.json())
       .then((res) => setProduct(res));
   }, []);
