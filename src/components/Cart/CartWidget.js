@@ -1,41 +1,46 @@
-import React, { Component } from "react";
+import React, { Component,useState } from "react";
 import { Accordion, Icon, Button } from "semantic-ui-react";
 import "./CartWidget.css";
 import { CartContent } from "./CartContent";
-export default class AccordionExampleStyled extends Component {
-  state = { activeIndex: 0 };
+import { useCartContext } from "../../context/CartContext";
 
-  handleClick = (e, titleProps) => {
+export const  CartWidget = () => {
+  const { cartItems } = useCartContext();
+  const [state, setState] = useState(0);
+
+  const handleClick = (e, titleProps) => {
     const { index } = titleProps;
-    const { activeIndex } = this.state;
-    const newIndex = activeIndex === index ? -1 : index;
-
-    this.setState({ activeIndex: newIndex });
+    if (state === 0) {
+      setState(1)
+    }else{
+      setState(0)
+    }
+  
   };
 
-  render() {
-    const { activeIndex } = this.state;
 
     return (
       <div className="CartContainer">
         <Accordion>
           <Accordion.Title
-            active={activeIndex === 1}
+            active={state === 1}
             index={1}
-            onClick={this.handleClick}
+            onClick={handleClick}
           >
             <Button animated="vertical">
               <Button.Content hidden>Cart </Button.Content>
               <Button.Content visible>
-                <Icon name="shop" />
+              {cartItems.length}<Icon name="shop" /> 
+               
               </Button.Content>
             </Button>
           </Accordion.Title>
-          <Accordion.Content active={activeIndex === 1}>
+          <Accordion.Content active={state === 1}>
             <CartContent></CartContent>
           </Accordion.Content>
         </Accordion>
       </div>
     );
-  }
+  
 }
+export default CartWidget;
