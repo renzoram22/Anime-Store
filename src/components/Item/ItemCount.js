@@ -1,15 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Input, Button, Icon } from "semantic-ui-react";
 import "./ItemCount.css";
-import { useCartContext } from "../../context/CartContext";
 
-const ItemCount = (props) => {
+const ItemCount = ({ stock, onAdd }) => {
   const [numero, setNumero] = useState(1);
   const [addButtonContent, setAddButtonContent] = useState("Add to cart");
-  let stock = props.stock;
-  const { cartItems, setCartItems,onAddCart } = useCartContext();
 
-  const onAdd = () => {
+  const handleAdd = () => {
     setAddButtonContent(
       <div>
         <i aria-hidden="true" class="spinner loading icon"></i>
@@ -19,7 +16,7 @@ const ItemCount = (props) => {
     if (stock >= numero) {
       setTimeout(() => {
         setAddButtonContent("Products Added");
-        onAddCart(props.itemInfo,numero)
+        onAdd(numero);
       }, 3000);
     } else {
       setTimeout(() => {
@@ -49,7 +46,7 @@ const ItemCount = (props) => {
       <button class="ui button" onClick={handleIncrement}>
         <div class="visible content">+</div>
       </button>
-      <button class="ui button addButton" onClick={onAdd}>
+      <button class="ui button addButton" onClick={handleAdd}>
         {addButtonContent}
       </button>
     </div>

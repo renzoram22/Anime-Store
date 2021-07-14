@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import { Card, Icon, Image } from "semantic-ui-react";
 import ItemCount from "../components/Item/ItemCount";
 import Item from "../components/Item/Item.js";
+import { useCartContext } from "../context/CartContext";
 
 const Category = ({ match }) => {
+  const { onAddCart } = useCartContext();
   const [product, setProduct] = useState([]);
   useEffect(() => {
     fetch(process.env.REACT_APP_BASE_URL)
@@ -19,6 +21,7 @@ const Category = ({ match }) => {
   return (
     <Card.Group>
       {productCategory.map((product) => {
+        const onAdd = (qty) => onAddCart(product, qty);
         return (
           <div className="ItemContainer">
             <Link to={`/ProductDetails/${product.id}`}>
@@ -29,7 +32,7 @@ const Category = ({ match }) => {
                 stock={product.stock}
               ></Item>
             </Link>
-            <ItemCount stock={product.stock} itemInfo={product}></ItemCount>
+            <ItemCount stock={product.stock} onAdd={onAdd}></ItemCount>
           </div>
         );
       })}
