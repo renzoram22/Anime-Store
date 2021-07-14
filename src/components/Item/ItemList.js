@@ -30,6 +30,7 @@ const ItemList = (props) => {
           <div className="ItemContainer">
             <Link to={`/ProductDetails/${product.id}`}>
               <Item
+                key={product.id}
                 image={product.image}
                 name={product.name}
                 price={product.price}
@@ -38,10 +39,7 @@ const ItemList = (props) => {
             </Link>
             <ItemCount
               stock={product.stock}
-              idProduct={product.id}
-              name={product.name}
-              image={product.image}
-              price={product.price}
+              itemInfo={product}
             ></ItemCount>
           </div>
         );

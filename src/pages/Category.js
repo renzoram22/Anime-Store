@@ -29,7 +29,7 @@ const Category = ({ match }) => {
                 stock={product.stock}
               ></Item>
             </Link>
-            <ItemCount stock={product.stock}></ItemCount>
+            <ItemCount stock={product.stock} itemInfo={product}></ItemCount>
           </div>
         );
       })}

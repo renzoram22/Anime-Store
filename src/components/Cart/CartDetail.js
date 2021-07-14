@@ -1,13 +1,10 @@
 import React, { useContext } from "react";
-import { CartContext } from "../Cart/CartContext";
+import { useCartContext } from "../../context/CartContext";
 const CartDetail = (props) => {
-  const [cartItems, setCartItems] = useContext(CartContext);
-  const deleteProduct = () => {
-    let newarray = cartItems.filter(
-      (element) => element.item.id !== props.idProduct
-    );
-    setCartItems(newarray);
-  };
+  const { deleteItem } = useCartContext();
+  const deleteThis = () =>{
+    deleteItem(props.id)
+  }
   return (
     <div>
       <div class="ui comments">
@@ -28,7 +25,7 @@ const CartDetail = (props) => {
             <i
               aria-hidden="true"
               class="trash icon"
-              onClick={deleteProduct}
+              onClick={deleteThis}
             ></i>
             <div></div>
           </div>

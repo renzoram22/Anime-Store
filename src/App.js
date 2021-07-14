@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import Stores from "./pages/Stores";
 import ProductDetails from "./pages/ProductDetails";
 import Category from "./pages/Category";
-import { CartProvider } from "./components/Cart/CartContext";
+import { CartProvider } from "./context/CartContext";
 
 export default function App() {
   return (

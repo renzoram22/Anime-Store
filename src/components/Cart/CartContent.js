@@ -1,19 +1,16 @@
 import React, { useContext } from "react";
-import { CartContext } from "../Cart/CartContext";
+import { useCartContext } from "../../context/CartContext";
 import CartDetail from "./CartDetail";
 
 export const CartContent = () => {
-  const [cartItems, setCartItems] = useContext(CartContext);
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  const { cartItems, setCartItems,onAddCart,clearCart } = useCartContext();
   return (
     <div className="CartContentContainer">
-      {cartItems.map((data, index) => {
+      {cartItems.map((data) => {
         return (
           <CartDetail
-            key={index}
-            idProduct={data.item.id}
+            key={data.item.id}
+            id={data.item.id}
             image={data.item.image}
             name={data.item.name}
             price={data.item.price}
@@ -21,9 +18,13 @@ export const CartContent = () => {
           ></CartDetail>
         );
       })}
-      <button class="ui button" onClick={clearCart}>
-        Vaciar Carrito
-      </button>
+      {cartItems.length > 0 &&
+       <button class="ui button" onClick={clearCart}>
+       Vaciar Carrito
+     </button>
+      }
+
+  
     </div>
   );
 };

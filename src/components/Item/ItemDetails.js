@@ -23,7 +23,7 @@ const ItemDetails = (props) => (
 
         <div class="ui segment">{props.description}</div>
 
-        <ItemCount stock={props.stock}></ItemCount>
+        <ItemCount stock={props.stock}  itemInfo={props}></ItemCount>
       </Grid.Column>
     </Grid>
 

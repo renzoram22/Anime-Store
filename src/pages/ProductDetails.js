@@ -20,6 +20,7 @@ const ProductDetails = ({ match }) => {
         return (
           <div className="ui container">
             <ItemDetails
+              id={product.id}
               image={product.image}
               name={product.name}
               price={product.price}

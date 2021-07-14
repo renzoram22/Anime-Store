@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Menu } from "semantic-ui-react";
 import Dropdown from "./Dropdown";
-import CartWidget from "./CartWidget";
+import CartWidget from "../Cart/CartWidget"
 import "./Menu.css";
 
 export default class MenuExampleContentProp extends Component {
