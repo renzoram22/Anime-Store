@@ -1,28 +1,38 @@
 import React, { useState, useEffect } from "react";
 import ItemDetails from "../components/Item/ItemDetails";
 import "./ProductDetails.css";
+import { db } from "../firebase";
 
 const ProductDetails = ({ match }) => {
   const [product, setProduct] = useState([]);
-  useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_URL)
-      .then((response) => response.json())
-      .then((res) => setProduct(res));
-  }, []);
+  const idProduct = match.params.id;
 
-  const productInfo = product.filter(
-    (product) => product.id == match.params.id
-  );
+  useEffect(() => {
+    const getProducts = () => {
+      const docs = [];
+      db.collection("products").onSnapshot((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          docs.push({ ...doc.data(), id: doc.id });
+          let filteredItem = docs.filter(
+            (itemFiltered) => itemFiltered.id === idProduct
+          );
+          // console.log(filteredItems);
+          setProduct(filteredItem);
+        });
+      });
+    };
+    getProducts();
+  }, [idProduct]);
 
   return (
     <div>
-      {productInfo.map((product) => {
+      {product.map((product) => {
         return (
           <div className="ui container">
             <ItemDetails
               id={product.id}
               image={product.image}
-              name={product.name}
+              name={product.title}
               price={product.price}
               description={product.description}
               state={product.state}

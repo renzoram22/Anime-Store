@@ -6,14 +6,22 @@ import "./ItemList.css";
 import { Link } from "react-router-dom";
 import Loader from "../Item/Loader.js";
 import { useCartContext } from "../../context/CartContext";
+import { db } from "../../firebase";
 
 const ItemList = (props) => {
   const { onAddCart } = useCartContext();
   const [products, setProducts] = useState([]);
+  const getProducts = () => {
+    const docs = [];
+    db.collection("products").onSnapshot((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        docs.push({ ...doc.data(), id: doc.id });
+      });
+    });
+    setProducts(docs);
+  };
   useEffect(() => {
-    fetch(process.env.REACT_APP_BASE_URL)
-      .then((response) => response.json())
-      .then((res) => setProducts(res));
+    getProducts();
   }, []);
 
   const [show, setShow] = useState(false);
@@ -34,8 +42,9 @@ const ItemList = (props) => {
             <Link to={`/ProductDetails/${product.id}`}>
               <Item
                 key={product.id}
+                sendKey={product.id}
                 image={product.image}
-                name={product.name}
+                name={product.title}
                 price={product.price}
                 stock={product.stock}
               ></Item>

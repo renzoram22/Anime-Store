@@ -1,8 +1,11 @@
-.CartContainer {
+.NavBarCartContainer {
   float: right;
   padding: 5px 20px 20px 20px;
 }
-.CartContentContainer{
-  width:25vh;
+.CartContentContainer {
+  width: 25vh;
 }
-i.trash.icon{margin-left: 10px;cursor: pointer;}
+i.trash.icon {
+  margin-left: 10px;
+  cursor: pointer;
+}

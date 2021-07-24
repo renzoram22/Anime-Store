@@ -1,13 +1,8 @@
 import React from "react";
-import { Dropdown, Menu } from "semantic-ui-react";
+import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-const options = [
-  { key: 1, text: "Figures", value: 1 },
-  { key: 2, text: "Manga", value: 2 },
-  { key: 3, text: "Accesories", value: 3 },
-];
 
-const DropdownExampleSimple = () => (
+const CategoryList = () => (
   <Dropdown text="Categories" simple item>
     <Dropdown.Menu>
       <Dropdown.Item text="Figures" as={Link} to="/Category/1" />
@@ -17,4 +12,4 @@ const DropdownExampleSimple = () => (
   </Dropdown>
 );
 
-export default DropdownExampleSimple;
+export default CategoryList;

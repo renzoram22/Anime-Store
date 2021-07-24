@@ -1,5 +1,4 @@
-import React, { useState, useContext } from "react";
-import { Input, Button, Icon } from "semantic-ui-react";
+import React, { useState } from "react";
 import "./ItemCount.css";
 
 const ItemCount = ({ stock, onAdd }) => {

@@ -1,0 +1,7 @@
+.CartButtonsContainer {
+  display: inline-flex;
+  margin-top: 5vh;
+}
+.cartDetailContainer {
+  display: flex;
+}

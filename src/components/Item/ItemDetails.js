@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Divider, Form, Grid, Segment } from "semantic-ui-react";
+import { Divider, Grid, Segment } from "semantic-ui-react";
 import ItemCount from "./ItemCount";
 import { useCartContext } from "../../context/CartContext";
 
@@ -10,7 +10,7 @@ const ItemDetails = (props) => {
     <Segment placeholder>
       <Grid columns={2} relaxed="very" stackable>
         <Grid.Column>
-          <img src={props.image} class="ui image" />
+          <img src={props.image} alt="productPhoto" class="ui image" />
         </Grid.Column>
 
         <Grid.Column verticalAlign="middle">

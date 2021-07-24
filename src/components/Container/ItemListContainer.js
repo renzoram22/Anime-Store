@@ -2,10 +2,8 @@ import React from "react";
 import "./ItemListContainer.css";
 import ItemList from "../Item/ItemList";
 
-
-const MessageExampleMessageProps = () => {
-  
+const ItemListContainer = () => {
   return <ItemList></ItemList>;
 };
 
-export default MessageExampleMessageProps;
+export default ItemListContainer;
