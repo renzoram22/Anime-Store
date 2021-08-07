@@ -39,9 +39,8 @@ const ItemList = (props) => {
         const onAdd = (qty) => onAddCart(product, qty);
         return (
           <div className="ItemContainer">
-            <Link to={`/ProductDetails/${product.id}`}>
+            <Link  to={`/ProductDetails/${product.id}`}>
               <Item
-                key={product.id}
                 sendKey={product.id}
                 image={product.image}
                 name={product.title}

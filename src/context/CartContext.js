@@ -14,7 +14,7 @@ export const CartProvider = ({ children }) => {
   };
   let agregarCart = false;
   const isInCart = (id) => {
-    cartItems.map((data) => {
+    cartItems.forEach((data) => {
       let idProduct = data.item.id;
       if (idProduct === id) {
         agregarCart = true;
@@ -35,16 +35,10 @@ export const CartProvider = ({ children }) => {
         }
       });
 
-      console.log(cartItems);
-      console.log(newCart);
-
       setCartItems(newCart);
       agregarCart = false;
     } else {
-
       setCartItems((prev) => [...prev, { item, qty }]);
-      console.log(cartItems);
-
     }
   };
   return (

@@ -16,7 +16,6 @@ const ProductDetails = ({ match }) => {
           let filteredItem = docs.filter(
             (itemFiltered) => itemFiltered.id === idProduct
           );
-          // console.log(filteredItems);
           setProduct(filteredItem);
         });
       });

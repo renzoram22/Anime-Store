@@ -1,7 +1,6 @@
 import React from "react";
 import "semantic-ui-css/semantic.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-//Components
 import Navbar from "./components/Navbar";
 import ItemListContainer from "./components/Container/ItemListContainer";
 import Contact from "./pages/Contact";
@@ -23,6 +22,7 @@ export default function App() {
           <Route path="/Category/:idCategory" component={Category} />
           <Route path="/ProductDetails/:id" component={ProductDetails} />
           <Route path="/cart" component={Cart} />
+
         </Switch>
       </Router>
     </CartProvider>

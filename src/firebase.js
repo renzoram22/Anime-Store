@@ -1,7 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/firestore";
 var firebaseConfig = {
-  apiKey: "AIzaSyBEyu0xYeqiSn5lA_Atg9j1B5albH0JQx4",
+  apiKey: process.env.REACT_APP_FIREBASE,
   authDomain: "anime-store-9933a.firebaseapp.com",
   projectId: "anime-store-9933a",
   storageBucket: "anime-store-9933a.appspot.com",
